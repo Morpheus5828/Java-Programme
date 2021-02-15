@@ -1,0 +1,11 @@
+//Careful, you have to put code into a package 
+
+
+public class Main {
+    public static void main(String[] args) {
+        Movie interstellar = new Movie("Interstellar ", 2014, 10000, 15.98);
+
+        System.out.println(interstellar);
+    }
+}
+
