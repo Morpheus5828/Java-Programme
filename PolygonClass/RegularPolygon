@@ -1,0 +1,61 @@
+/* This project consist to represent  a regular polygon, who is defined  by the number of side (the order of polygon)
+ * her center, a radius  r of his circumscribed circle and an angle θ, of one of segments who represent the gap between
+ * the figure center and un horizontal summit.
+ * Let's stars by initialised properties: 'order', 'circle', 'angle' and 'tableauDeSommets', de respective types:
+ * int, Circle, double and CartesianPoint, the last one is tableau who contains the summit coordinate.
+ * Let's build methods: getSideLength, getPerimeter, getArea, getCenter, et getVertex.
+ * Functionality of each methods:
+ * - getSideLength : return one of polygon side length, given by 2r.sin(α/2) with r the radius and
+ * α, who represent gap between two summits.
+ * - getPerimeter : return figure perimeter value.
+ * - getArea : return figure area value.
+ * - getCenter : return figure center, her type is: CartesianPoint.
+ * - getVertex : Get coordinate polygon summits.
+ * Finally, we gonna build two constructors.
+ */
+
+public class RegularPolygon {
+    private final int order;
+    private Circle circle;
+    private double angle;
+    CartesianPoint[] tableauDeSommets;
+
+    public void setAngle(double angle) {
+        this.angle = angle;
+    }
+    private double getSideLength() {
+        return 2 * circle.getRadius() * Math.sin(this.angle / 2);
+    }
+    public double getPerimeter() {
+        return this.order * getSideLength();
+    }
+    public double getArea() {
+        return circle.getRadius() / Math.cos(this.angle / 2);
+    }
+    public CartesianPoint getCenter() {
+        return circle.getCenter();
+    }
+    public void initVertex() {
+        for (int i = 0; i < order; i++) {
+            tableauDeSommets[i] = new CartesianPoint(
+                    circle.getRadius()*  Math.cos(angle*i) + circle.getCenter().getX(),
+                    circle.getRadius() * Math.sin(angle*i) + circle.getCenter().getY());
+        }
+    }
+    public CartesianPoint getVertex(int value) {
+        return tableauDeSommets[value];
+    }
+
+    public RegularPolygon(int order, Circle circle) {
+            this.tableauDeSommets = new CartesianPoint[order];
+            this.order = order;
+            this.circle = circle;
+            this.initVertex();
+        }
+    public RegularPolygon(int order, CartesianPoint center, double radius) {
+        this.order = order;
+        this.angle = 0;
+        this.circle = new Circle(radius, center);
+        this.initVertex();
+    }
+}
