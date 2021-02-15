@@ -1,0 +1,16 @@
+public class CartesianPoint {
+    private final double x;
+    private final double y;
+
+    public CartesianPoint(double initX, double initY) {
+        this.x = initX;
+        this.y = initY;
+    }
+    public double getX() { return x; }
+    public double getY() { return y; }
+
+    public String toString() {
+        return "x = " + this.x + "\n" +
+              " y = " + this.y;
+    }
+}
