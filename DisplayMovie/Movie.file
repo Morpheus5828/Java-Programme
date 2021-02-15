@@ -1,0 +1,37 @@
+public class Movie {
+
+    private String movieName;
+    private int movieDate;
+    private int numberCopy;         
+    private double unitPrice;
+    private double totalPrice;
+
+
+    public Movie(String aName, int aDate, int aNumber, double aUnitPrice){            
+        this.movieName = aName;
+        this.movieDate = aDate;      
+        this.numberCopy = aNumber;
+        this.unitPrice = aUnitPrice;
+        this.totalPrice = this.numberCopy * this.unitPrice;         
+    }
+
+    public double getUnitPrice() {return this.unitPrice;}            
+    public String getMovieName() {return this.movieName;}
+    public int getNumberCopy() {return this.numberCopy;}             
+    public int getMovieDate() {return this.movieDate;}
+    public double getTotalPrice() {return this.totalPrice;}
+
+    public String toString() {
+        return "The title of the movie is " + this.movieName + ",the date is " + this.movieDate +
+                ", the numbers of copies are " + this.numberCopy + ", the unit price is " + this.unitPrice +
+                "euros" + " ,total price is " + this.totalPrice + "euros";
+
+        //we can also use void display() in spite of toString() method
+
+        /**public void display() {
+         System.out.println("The title of the movie is " + this.movieName + ",the date is " + this.movieDate +
+         " ,the numbers of copies are " + this.numberCopy + " ,the unit price is " + this.unitPrice + " euros" +
+         ", total price is " + this.totalPrice + " euros"); }**/
+
+    }
+}
