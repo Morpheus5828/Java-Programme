@@ -1,0 +1,40 @@
+/* The DecimalFormat module, permet de crée une variable qui arrondiras la valeur retourner par les méthodes.
+ * On crée d'une variable 'centre' de type CartesianPoint, puis on initialise une variable 'circle' de type Circle.
+ */
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("---> Please, enter the circle characteristics  :");
+        System.out.println("--> Could you enter the center ordinate :  ");
+        System.out.print("x = ");
+        double abscissa = sc.nextDouble();
+        System.out.print("y = ");
+        double ordinate = sc.nextDouble();
+        System.out.println("--> and the radius value : ");
+        double radius = sc.nextDouble();
+        Circle circle = new Circle(radius, new CartesianPoint(abscissa, ordinate));
+        System.out.println("--> Tape the order number of your polygon :");
+        int order = sc.nextInt();
+        System.out.println("Which constructors do you want to chose ?" +
+                " 1 - RegularPolygon(int order, Circle circle)" +
+                " 2 - RegularPolygon(int order, CartesianPoint center, double radius) +" +
+                "(tape 1 or 2) ");
+        int answer = sc.nextInt();
+        if(answer == 1) {
+            RegularPolygon polygon = new RegularPolygon(order, circle);
+        }
+        else {
+            System.out.println("Can you write again the ordinate center : ");
+            System.out.print("x = ");
+            double abscissaCenter = sc.nextDouble();
+            System.out.print("y = ");
+            double ordinateCenter = sc.nextDouble();
+            RegularPolygon polygon = new RegularPolygon(
+                    order, new CartesianPoint(abscissaCenter, ordinateCenter),radius
+            );
+        }
+    }
+}
